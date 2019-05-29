@@ -4,11 +4,14 @@ import {Logo} from "../../../common/logo/logo";
 import {UserProfile} from "./user-profile/user-profile";
 import {userInfo} from "../../../../common/states/user-info";
 import {authenCache} from "../../../../common/cache/authen-cache";
+import socket from "../../../../common/socket/socket";
 
 export class NavBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      on: false
+    };
   };
 
   handleSignout = () => {
@@ -17,6 +20,10 @@ export class NavBar extends React.Component {
       customHistory.push("/login");
     });
 
+  };
+
+  toggleLight = () => {
+    socket.emit("toggleLight", this.state.on, () => this.setState({on: !this.state.on}))
   };
 
   render() {
@@ -41,6 +48,7 @@ export class NavBar extends React.Component {
                 <a className="nav-link p-0 user-actions">
                   <span>Hello {userInfo.getState().name}</span>
                   <button className="btn btn-signout" onClick={this.handleSignout}>Đăng xuất</button>
+                  <button className="btn btn-signout" onClick={this.toggleLight}>{this.state.on ? "Tắt đèn" : "Bật đèn"}</button>
                 </a>
               </li>
             </ul>

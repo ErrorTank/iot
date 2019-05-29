@@ -14,5 +14,8 @@ module.exports = (socket) => {
     }, {new: true}).lean().then(data => {
       // deviceEvent.emit("dataChange", data.devices.find(each => each._id.toString() === data.device))
     });
+  });
+  socket.on("toggleLight", (data, cb) => {
+    socket.emit("toggle-light", data, cb);
   })
 };
