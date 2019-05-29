@@ -48,11 +48,7 @@ export class DeviceView extends React.Component {
             {data && (
               <div>
                 <p className="dn-title">Tra cứu dữ liệu</p>
-                {data.dataHistory.map((each, key) => (
-                  <p style={{color: "#4a4a4a"}} key={key}>
-                    {JSON.stringify(each)}
-                  </p>
-                ))}
+
                 <Armcharts paddingRight={20} data={data.dataHistory.map(each => omit(each, ["_id"]))}/>
               </div>
             )}
