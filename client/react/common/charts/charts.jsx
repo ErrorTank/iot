@@ -26,8 +26,9 @@ export class Armcharts extends React.Component{
         console.log(chart.data)
 // Create axes
         var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
-        dateAxis.renderer.minGridDistance = 20;
+        dateAxis.renderer.minGridDistance = 100;
 
+        dateAxis.dateFormats.setKey("day", "MMMM dt");
 
 // Create series
         function createAxisAndSeries(field, name, opposite, bullet) {
@@ -97,7 +98,8 @@ export class Armcharts extends React.Component{
 
 // Add cursor
         chart.cursor = new am4charts.XYCursor();
-
+        chart.scrollbarX = new am4core.Scrollbar();
+        chart.scrollbarY = new am4core.Scrollbar();
 // generate some random data, quite different range
 //         function generateChartData() {
 //             var chartData = [];
