@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const {AuthorizationError, JWTError} = require("../utils/error/error-types");
 const {getPrivateKey, getPublicKey} = require("../authorization/keys/keys");
+const pick = require("lodash/pick");
 
 const decodeAuthRequest = (req, secret, config) => {
   return new Promise((resolve, reject) => {
@@ -24,7 +25,7 @@ const decodeAuthRequest = (req, secret, config) => {
 
 const createAuthToken = (userInfo, secret, config) =>{
   return new Promise((resolve, reject) => {
-    jwt.sign(userInfo, secret, config, (err, token) => {
+    jwt.sign(pick(userInfo, ["name", "_id", "username"]), secret, config, (err, token) => {
       if(err){
         console.log(err);
         reject(new JWTError("Fail to generate token"));
@@ -61,7 +62,7 @@ const authorization = (secret, config) => {
           next();
         }
       }).catch(err => {
-
+        console.log(err)
         next(new AuthorizationError("require_login"))
     })
   }

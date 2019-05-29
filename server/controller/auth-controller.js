@@ -9,6 +9,7 @@ const accManager = require("../db/db-controller/iot-user");
 module.exports = () => {
 
   router.get("/auth", authMiddleware, (req, res, next) => {
+
     accManager.getClientUserCache(req.user).then(info => {
       res.status(200).json(omit(info, 'password'));
     }).catch(err => next(err));

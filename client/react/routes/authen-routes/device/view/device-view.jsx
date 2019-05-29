@@ -4,6 +4,8 @@ import {deviceApi} from "../../../../../api/common/device-api";
 import {userInfo} from "../../../../../common/states/user-info";
 import socket from "../../../../../common/socket/socket"
 import {LoadingInline} from "../../../../common/loading-inline/loading-inline";
+import {Armcharts} from "../../../../common/charts/charts";
+import omit from "lodash/omit"
 
 export class DeviceView extends React.Component {
   constructor(props) {
@@ -51,6 +53,7 @@ export class DeviceView extends React.Component {
                     {JSON.stringify(each)}
                   </p>
                 ))}
+                <Armcharts paddingRight={20} data={data.dataHistory.map(each => omit(each, ["_id"]))}/>
               </div>
             )}
 

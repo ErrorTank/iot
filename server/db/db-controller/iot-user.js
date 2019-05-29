@@ -4,9 +4,13 @@ const isNil = require("lodash/isNil");
 const IotUser = require("../../db/iot-user");
 const getClientUserCache = (user) => {
   return IotUser.findById(user._id).lean()
-    .then(data => data ? data : new Error("account_not_found"))
+    .then(data => {
+      console.log(data);
+      return data ? data : new Error("account_not_found");
+    })
 };
 const checkLogin = ({username, password}) => {
+  console.log(username)
   return IotUser.find({username})
     .then(data => {
       console.log(data)

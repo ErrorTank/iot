@@ -31,7 +31,7 @@ module.exports = () => {
 
   router.post("/device/new/:userID", authMiddleware, (req, res, next) => {
     deviceManager.addNewUserDevice(req.params.userID, req.body).then((device) => {
-      console.log("add")
+
       res.status(200).json(device);
     }).catch(err => next(err));
 
@@ -39,7 +39,7 @@ module.exports = () => {
 
   router.put("/device/edit/:userID/:deviceID", authMiddleware, (req, res, next) => {
     deviceManager.editUserDevice(req.params.userID, req.params.deviceID , req.body).then((device) => {
-      console.log("edit")
+
       res.status(200).json(device);
     }).catch(err => next(err));
 

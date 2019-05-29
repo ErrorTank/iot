@@ -7,6 +7,7 @@ export const sendRequest = ({url, type, data, headers, beforeSend, onError}) => 
       if (headers && Object.keys(headers).length) {
         Object.keys(headers).map((each) => {
           let val = typeof headers[each] === "function"  ? headers[each]() : headers[each];
+
           xhr.setRequestHeader(each, val)
         });
       }
@@ -18,6 +19,7 @@ export const sendRequest = ({url, type, data, headers, beforeSend, onError}) => 
       resolve(data);
     },
     error: (rsp, status, error) => {
+
       reject(rsp.responseJSON);
       onError && onError(rsp.responseJSON);
     }

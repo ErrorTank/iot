@@ -4,7 +4,7 @@ const deviceHandlers = require("./device-event-handler");
 module.exports = (server) => {
   const io = require('socket.io')(server);
   io.sockets.on('connection', function (socket) {
-    console.log("cac")
+
     socket.on('join room', function (data, cb) {
       console.log(data.deviceID);
       socket.join(data.deviceID);
