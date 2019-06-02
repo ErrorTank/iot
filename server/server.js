@@ -1,4 +1,4 @@
-require('dotenv').config({path: '.env'});
+require('dotenv').config({path: 'prod.env'});
 const app = require("./config/express");
 const server = require('http').createServer(app);
 const routerConfig = require('./config/routes');
