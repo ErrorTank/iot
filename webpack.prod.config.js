@@ -3,6 +3,12 @@ const path = require("path");
 const dotenv =require("dotenv");
 const webpack = require("webpack");
 
+const env = dotenv.config({path: "./prod.env"}).parsed;
+
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 
 module.exports = (env) => {
@@ -22,7 +28,9 @@ module.exports = (env) => {
     resolve: {
       extensions: [".js", ".jsx", ".styl", ".graphql"]
     },
-
+    plugins: [
+      new webpack.DefinePlugin(envKeys)
+    ],
     node: {
       fs: 'empty'
     },

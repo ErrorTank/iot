@@ -2,7 +2,10 @@ const IotUser = require("../db/iot-user");
 const deviceEvent = require("../socket/event-emitter");
 const mongoose = require("mongoose");
 
+
+
 module.exports = (socket) => {
+  //Xử lý dữ liệu thay đổi từ cảm biến
   socket.on("dataChange", ({user, device, time, temperature, humidity}) => {
     IotUser.findOneAndUpdate({
       _id: mongoose.Types.ObjectId(user),
@@ -15,6 +18,7 @@ module.exports = (socket) => {
       socket.emit("dataChange", data.devices.find(each => each._id.toString() === data.device))
     });
   });
+  //Bật tắt đèn
   socket.on("toggleLight", (data, cb) => {
     socket.emit("toggle-light", data, cb);
   })
