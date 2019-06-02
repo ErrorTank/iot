@@ -6,7 +6,7 @@ const initializeDb = require("./config/db");
 const initializeSocket = require("./socket/index");
 
 initializeDb().then((db) => {
-  console.log(process.env)
+
 
   server.listen(process.env.PORT, () => {
     console.log(`Server running on port: ${process.env.PORT || 6969}` );
