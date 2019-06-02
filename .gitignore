@@ -4,4 +4,5 @@
 /.cache
 package-lock.json
 /uploads
+.env
 ./scripts

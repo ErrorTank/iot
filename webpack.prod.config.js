@@ -2,12 +2,7 @@
 const path = require("path");
 const dotenv =require("dotenv");
 const webpack = require("webpack");
-const env = dotenv.config({path: "./prod.env"}).parsed;
 
-const envKeys = Object.keys(env).reduce((prev, next) => {
-  prev[`process.env.${next}`] = JSON.stringify(env[next]);
-  return prev;
-}, {});
 
 
 module.exports = {
@@ -21,9 +16,6 @@ module.exports = {
     path:  path.resolve(__dirname, 'dist/bundle'),
 
   },
-  plugins: [
-    new webpack.DefinePlugin(envKeys)
-  ],
   resolve: {
     extensions: [".js", ".jsx", ".styl", ".graphql"]
   },
