@@ -5,17 +5,14 @@ module.exports = (server) => {
   const io = require('socket.io')(server);
   io.sockets.on('connection', function (socket) {
 
-    socket.on('join room', function (data, cb) {
-      console.log(data.deviceID);
-      socket.join(data.deviceID);
-      deviceEvent.init(socket).then(() => cb());
-    });
-    socket.on('leave room', function (data) {
-      console.log(data.deviceID);
-      socket.leave(data.deviceID);
+    deviceEvent.init(socket);
+    socket.on("disconnect", function () {
+      deviceEvent.rm(socket.id)
     });
     deviceHandlers(socket);
   });
+
+  return io;
 
 
 

@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = () => {
+module.exports = (db, io) => {
 
-  router.use('/api', require("../controller/auth-controller")());
-  router.use('/api', require("../controller/device-controller")());
+  router.use('/api', require("../controller/auth-controller")(io));
+  router.use('/api', require("../controller/device-controller")(io));
   return router;
 };

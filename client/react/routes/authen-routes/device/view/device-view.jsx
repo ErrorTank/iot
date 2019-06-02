@@ -16,22 +16,14 @@ export class DeviceView extends React.Component {
     };
 
     deviceApi.getUserDevice(userInfo.getState()._id, props.match.params.deviceID).then(data => {
-      this.setState({data});
-      socket.emit("join room", {deviceID: data._id}, () => {
-        console.log("Join room success!");
-        this.setState({loading: false});
-        socket.on("dataChange", newData => {
-          this.setState({data: newData});
-        })
-      });
+      this.setState({data, loading: false});
+      socket.on("dataChange", newData => {
+        this.setState({data: newData});
+      })
 
 
     })
   };
-
-  componentWillUnmount() {
-    socket.emit("leave room", {deviceID: this.state.data._id})
-  }
 
   render() {
     let {data, loading} = this.state;
@@ -49,7 +41,7 @@ export class DeviceView extends React.Component {
               <div>
                 <p className="dn-title">Tra cứu dữ liệu</p>
 
-                <Armcharts paddingRight={20} data={data.dataHistory.map(each => omit(each, ["_id"]))}/>
+                <Armcharts paddingRight={20} data={data.dataHistory.map(each => ({...omit(each, ["_id"]), time: new Date(each.time)}))}/>
               </div>
             )}
 

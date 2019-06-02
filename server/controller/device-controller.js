@@ -7,7 +7,8 @@ const {getPublicKey, getPrivateKey} = require("../authorization/keys/keys");
 const authMiddleware = authorization(getPublicKey(), {expiresIn: "1 day", algorithm: ["RS256"]});
 const deviceManager = require("../db/db-controller/device");
 
-module.exports = () => {
+module.exports = (io) => {
+
 
   router.get("/devices/:userID", authMiddleware, (req, res, next) => {
     deviceManager.getUserDevices(req.params.userID).then(info => {

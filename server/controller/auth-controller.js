@@ -6,7 +6,7 @@ const {getPublicKey, getPrivateKey} = require("../authorization/keys/keys");
 const authMiddleware = authorization(getPublicKey(), {expiresIn: "1 day", algorithm: ["RS256"]});
 const accManager = require("../db/db-controller/iot-user");
 
-module.exports = () => {
+module.exports = (io) => {
 
   router.get("/auth", authMiddleware, (req, res, next) => {
 

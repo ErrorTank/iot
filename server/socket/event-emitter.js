@@ -1,14 +1,18 @@
+import socket from "../../client/common/socket/socket";
 
 
-const createEventEmitter = () => {
-  let thisSocket = null;
+const createEventEmitter = (def = []) => {
+  let thisSocket = def;
   return {
     async init(socket){
-      thisSocket = socket;
+      thisSocket.push({...socket});
       return true;
     },
-    emit(emitMsg, data){
-      thisSocket.emit(emitMsg, data)
+    emit(id, emitMsg, data){
+      thisSocket.find(socket => socket.id === id).emit(emitMsg, data)
+    },
+    rm(id){
+      thisSocket = thisSocket.filter(each => each.id !== id)
     }
   }
 };

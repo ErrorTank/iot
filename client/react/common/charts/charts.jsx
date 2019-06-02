@@ -27,8 +27,11 @@ export class Armcharts extends React.Component{
 // Create axes
         var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
         dateAxis.renderer.minGridDistance = 100;
-
-        dateAxis.dateFormats.setKey("day", "MMMM dt");
+        dateAxis.baseInterval ={
+            timeUnit: "second",
+            count: 3
+        };
+        // dateAxis.dateFormats.setKey("day", "MMMM dt");
 
 // Create series
         function createAxisAndSeries(field, name, opposite, bullet) {

@@ -12,7 +12,7 @@ module.exports = (socket) => {
         "devices.$.dataHistory": {time, temperature, humidity, _id: mongoose.Types.ObjectId()}
       }
     }, {new: true}).lean().then(data => {
-      // deviceEvent.emit("dataChange", data.devices.find(each => each._id.toString() === data.device))
+      socket.emit("dataChange", data.devices.find(each => each._id.toString() === data.device))
     });
   });
   socket.on("toggleLight", (data, cb) => {
