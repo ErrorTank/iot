@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "gulp dev",
     "wp": "webpack --watch",
-    "start": "nodemon server/server.js",
+    "start": "node server/server.js",
     "test": "nodemon test.js",
     "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js"
   },

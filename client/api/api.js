@@ -6,7 +6,7 @@ import {TrackLocation} from "../react/common/location-tracker";
 
 
 const authenApiConfig = {
-  hostURL: `${process.env.APP_URI}/api`,
+  hostURL: process.env.APP_API_URL,
   onErrors: {
     "token_expired": () => {
       authenCache.clearAuthen();
@@ -28,7 +28,7 @@ const authenApiConfig = {
 };
 
 const offlineApiConfig = {
-  hostURL: `${process.env.APP_URI}/api`
+  hostURL: process.env.APP_API_URL
 };
 
 
