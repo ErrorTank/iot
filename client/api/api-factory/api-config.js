@@ -3,7 +3,7 @@ import forIn from "lodash/forIn";
 
 export const apiFactory = {
   createApi: ({hostURL, beforeSend, onErrors = {}}) => {
-    console.log("cac")
+
     console.log(process.env)
     let headers = {
 
