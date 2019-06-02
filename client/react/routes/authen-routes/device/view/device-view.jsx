@@ -4,7 +4,7 @@ import {deviceApi} from "../../../../../api/common/device-api";
 import {userInfo} from "../../../../../common/states/user-info";
 import socket from "../../../../../common/socket/socket"
 import {LoadingInline} from "../../../../common/loading-inline/loading-inline";
-import {Armcharts} from "../../../../common/charts/charts";
+// import {Armcharts} from "../../../../common/charts/charts";
 import omit from "lodash/omit"
 
 export class DeviceView extends React.Component {
@@ -41,7 +41,7 @@ export class DeviceView extends React.Component {
               <div>
                 <p className="dn-title">Tra cứu dữ liệu</p>
 
-                <Armcharts paddingRight={20} data={data.dataHistory.map(each => ({...omit(each, ["_id"]), time: new Date(each.time)}))}/>
+                {/*<Armcharts paddingRight={20} data={data.dataHistory.map(each => ({...omit(each, ["_id"]), time: new Date(each.time)}))}/>*/}
               </div>
             )}
 
