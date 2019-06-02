@@ -1,7 +1,7 @@
 const fs = require("fs-extra");
 const path = require("path");
 
-const listDirFiles = ["assets", "files"];
+const listDirFiles = ["assets", "bundle"];
 const source = "../public";
 const dest = "../dist";
 
