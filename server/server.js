@@ -9,7 +9,7 @@ initializeDb().then((db) => {
 
 
   server.listen(process.env.PORT, () => {
-    console.log(`Server running on port: ${process.env.PORT}` );
+    console.log(`Server running on port: ${process.env.PORT || 6969}` );
     const io = initializeSocket(server);
     app.use('/', routerConfig(db, io));
     app.use(require('./utils/error/error-handlers'));
