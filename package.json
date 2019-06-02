@@ -8,7 +8,7 @@
     "wp": "webpack --watch",
     "start": "nodemon server/server.js",
     "test": "nodemon test.js",
-    "heroku-postbuild": "webpack -p"
+    "heroku-prebuild": "webpack -p"
   },
   "author": "",
   "license": "ISC",
