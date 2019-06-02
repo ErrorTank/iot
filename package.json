@@ -7,7 +7,8 @@
     "dev": "gulp dev",
     "wp": "webpack --watch",
     "start": "nodemon server/server.js --exec babel-node --ignore react",
-    "test": "nodemon test.js"
+    "test": "nodemon test.js",
+    "heroku-postbuild": "webpack -p"
   },
   "author": "",
   "license": "ISC",
