@@ -10,3 +10,4 @@ Promise.all(listDirFiles.map(item => fs.copy(path.resolve(__dirname, source + "/
   .then(() => console.log("success"))
   .catch((err) => console.log(err))
 ;
+// "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js",
