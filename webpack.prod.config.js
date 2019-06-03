@@ -70,6 +70,15 @@ module.exports = (env) => {
               plugins: ["@babel/plugin-syntax-dynamic-import"]
             }
           }
+        },
+        {
+          test: /\.(png|jpg|gif|svg)$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {}
+            }
+          ]
         }
       ]
     },
