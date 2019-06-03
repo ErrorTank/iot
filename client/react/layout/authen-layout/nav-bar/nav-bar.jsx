@@ -23,7 +23,7 @@ export class NavBar extends React.Component {
   };
 
   toggleLight = () => {
-    socket.emit("toggleLight", this.state.on, () => this.setState({on: !this.state.on}))
+    socket.emit("toggleLight", !this.state.on, () => this.setState({on: !this.state.on}))
   };
 
   render() {

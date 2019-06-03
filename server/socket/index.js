@@ -4,11 +4,11 @@ const deviceHandlers = require("./device-event-handler");
 module.exports = (server) => {
   const io = require('socket.io')(server);
   io.sockets.on('connection', function (socket) {
-    deviceEvent.init(socket);
+
     socket.on("disconnect", function () {
-      deviceEvent.rm(socket.id)
+
     });
-    deviceHandlers(socket);
+    deviceHandlers(socket, io);
   });
 
   return io;

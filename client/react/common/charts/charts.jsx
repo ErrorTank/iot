@@ -13,6 +13,10 @@ export class Armcharts extends React.Component{
     };
 
     componentDidMount() {
+       this.init();
+    }
+
+    init(){
         let chart = am4core.create("chartdiv", am4charts.XYChart);
 
         chart.paddingRight = 20;
@@ -145,6 +149,7 @@ export class Armcharts extends React.Component{
     }
 
     componentDidUpdate(oldProps) {
+        this.init();
         if (oldProps.paddingRight !== this.props.paddingRight) {
             this.chart.paddingRight = this.props.paddingRight;
         }

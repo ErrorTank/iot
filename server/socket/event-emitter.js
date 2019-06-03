@@ -5,7 +5,7 @@ const createEventEmitter = (def = []) => {
   let thisSocket = def;
   return {
     async init(socket){
-      thisSocket.push({...socket});
+      thisSocket.push(socket);
       return true;
     },
     emit(id, emitMsg, data){
