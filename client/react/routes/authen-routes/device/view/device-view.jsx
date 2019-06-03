@@ -41,7 +41,7 @@ export class DeviceView extends React.Component {
               <div>
                 <p className="dn-title">Tra cứu dữ liệu</p>
 
-                {/*<Armcharts paddingRight={20} data={data.dataHistory.map(each => ({...omit(each, ["_id"]), time: new Date(each.time)}))}/>*/}
+                <Armcharts paddingRight={20} data={data.dataHistory.map(each => ({...omit(each, ["_id"]), time: new Date(each.time)}))}/>
               </div>
             )}
 
