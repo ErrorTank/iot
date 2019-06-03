@@ -13,6 +13,7 @@ const envKeys = Object.keys(env).reduce((prev, next) => {
 
 module.exports = (env) => {
   console.log(env)
+  console.log("Dasdasdsdadas")
   return ({
 
     mode: "production",
