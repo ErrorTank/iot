@@ -11,53 +11,49 @@ const envKeys = Object.keys(env).reduce((prev, next) => {
 }, {});
 
 
-module.exports = (env) => {
-  console.log(env)
-  console.log("Dasdasdsdadas")
-  return ({
+module.exports = {
 
-    mode: "production",
-    entry: {
-      loader: ["@babel/polyfill", "./client/react/loader.jsx"]
-    },
-    output: {
-      filename: 'bundle.js',
-      publicPath: "/",
-      path:  path.resolve(__dirname, 'dist/bundle'),
+  mode: "production",
+  entry: {
+    loader: ["@babel/polyfill", "./client/react/loader.jsx"]
+  },
+  output: {
+    filename: 'bundle.js',
+    publicPath: "/",
+    path:  path.resolve(__dirname, 'dist/bundle'),
 
-    },
-    resolve: {
-      extensions: [".js", ".jsx", ".styl", ".graphql"]
-    },
-    plugins: [
-      new webpack.DefinePlugin(envKeys)
-    ],
-    node: {
-      fs: 'empty'
-    },
-    module: {
-      rules: [
+  },
+  resolve: {
+    extensions: [".js", ".jsx", ".styl", ".graphql"]
+  },
+  plugins: [
+    new webpack.DefinePlugin(envKeys)
+  ],
+  node: {
+    fs: 'empty'
+  },
+  module: {
+    rules: [
 
-        {
-          test: /\.jsx?$/,
-          use: [
-            {
-              loader: 'babel-loader',
-              options: {
-                presets: ["@babel/preset-env",  "@babel/preset-react"]
-              }
+      {
+        test: /\.jsx?$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ["@babel/preset-env",  "@babel/preset-react"]
             }
-          ],
-          exclude: /node_modules/
-        }, {
-          test: /\.styl$/,
-          use: [
-            "style-loader",
-            "css-loader",
-            "stylus-loader"
-          ]
-        }
-      ]
-    },
-  });
+          }
+        ],
+        exclude: /node_modules/
+      }, {
+        test: /\.styl$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          "stylus-loader"
+        ]
+      }
+    ]
+  },
 };
