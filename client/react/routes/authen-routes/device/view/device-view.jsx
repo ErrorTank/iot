@@ -17,10 +17,10 @@ export class DeviceView extends React.Component {
 
     deviceApi.getUserDevice(userInfo.getState()._id, props.match.params.deviceID).then(data => {
       this.setState({data, loading: false});
-      // socket.on("dataChange", newData => {
-      //   console.log(newData)
-      //   this.setState({data: newData});
-      // })
+      socket.on("dataChange", newData => {
+        console.log(newData)
+        this.setState({data: newData});
+      })
 
 
     })
