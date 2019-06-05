@@ -34,6 +34,7 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
     "acorn": "^6.1.1",
+    "amchart4-react": "^1.0.4",
     "babel-loader": "^8.0.5",
     "classnames": "^2.2.6",
     "css-loader": "^0.28.11",

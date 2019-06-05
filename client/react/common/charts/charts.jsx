@@ -2,6 +2,7 @@ import React from "react";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import {AmchartsReact} from 'amchart4-react'
 
 am4core.useTheme(am4themes_animated);
 
@@ -36,7 +37,7 @@ export class Armcharts extends React.Component{
             count: 3
         };
         // dateAxis.dateFormats.setKey("day", "MMMM dt");
-
+        this.setState(() => ({dateAxis}))
 // Create series
         function createAxisAndSeries(field, name, opposite, bullet) {
             var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
@@ -107,6 +108,7 @@ export class Armcharts extends React.Component{
         chart.cursor = new am4charts.XYCursor();
         chart.scrollbarX = new am4core.Scrollbar();
         chart.scrollbarY = new am4core.Scrollbar();
+        this.setState({chart});
 // generate some random data, quite different range
 //         function generateChartData() {
 //             var chartData = [];
@@ -148,16 +150,22 @@ export class Armcharts extends React.Component{
         }
     }
 
-    componentDidUpdate(oldProps) {
-        this.init();
-        if (oldProps.paddingRight !== this.props.paddingRight) {
-            this.chart.paddingRight = this.props.paddingRight;
-        }
+    componentWillReceiveProps(newProps) {
+        this.setState({data: newProps.data});
+
     }
 
     render() {
         return (
-          <div id="chartdiv" style={{ width: "100%", height: "500px" }}></div>
+          <div id="chartdiv" style={{ width: "100%", height: "500px" }}>
+              {this.state.chart ?
+                <AmchartsReact
+                  chart={this.state.chart}
+                  xAxis={this.state.dateAxis}
+                  color={am4core.color("#838383")}
+                />
+                : null}
+          </div>
         );
     }
 }
